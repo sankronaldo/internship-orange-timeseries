@@ -401,3 +401,239 @@ class VAR(_BaseModel):
         err = q * sigma
         return np.asarray([forecast, forecast - err, forecast + err])
 
+
+import numpy as np
+import statsmodels
+from scipy.stats import norm
+import statsmodels.api as sm
+
+from Orange.data import Table
+from orangecontrib.timeseries import Timeseries
+
+# Other existing code...
+
+class SARIMA(_BaseModel):
+    """Seasonal Autoregressive Integrated Moving Average (SARIMA) model
+
+    An ARIMA model with additional seasonal components.
+
+    Parameters
+    ----------
+    order : tuple (p, d, q)
+        The non-seasonal part of the model (AR order, differencing order, MA order).
+    seasonal_order : tuple (P, D, Q, m)
+        The seasonal part of the model (SAR order, seasonal differencing order, SMA order, number of periods in season).
+    """
+
+    REQUIRES_STATIONARY = False
+    __wrapped__ = statsmodels.tsa.statespace.sarimax.SARIMAX
+
+    def __init__(self, order=(1, 0, 0), seasonal_order=(0, 0, 0, 1), use_exog=False):
+        super().__init__()
+        self.order = order
+        self.seasonal_order = seasonal_order
+        self.use_exog = use_exog
+        self._model_kwargs.update(order=order, seasonal_order=seasonal_order)
+
+    def __str__(self):
+        return 'SARIMA{}x{}'.format(self.order, self.seasonal_order)
+
+    def _predict(self, steps, exog, alpha):
+        pred_res = self.results.get_forecast(steps, exog=exog)
+        forecast = pred_res.predicted_mean
+        confint = pred_res.conf_int(alpha=alpha)
+        return np.c_[forecast, confint].T
+
+    def _before_init(self, endog, exog):
+        exog = exog if self.use_exog else None
+        if len(endog) == 0:
+            raise ValueError('Need an endogenous (target) variable to fit')
+        return endog, exog
+
+    def _fittedvalues(self):
+        # Statsmodels supports different args whether series is
+        # differentiated (order has d) or not. -- stupid statsmodels
+        kwargs = dict(typ='levels') if self.order[1] > 0 else {}
+        return self.results.predict(**kwargs)
+
+
+import numpy as np
+from scipy import stats
+from statsmodels.tsa.holtwinters import SimpleExpSmoothing
+from statsmodels.tsa.stattools import adfuller
+
+
+class SimpleExponentialSmoothing(_BaseModel):
+    """Simple Exponential Smoothing model
+
+    A time series forecasting method for univariate data without a trend or seasonality.
+
+    Parameters
+    ----------
+    smoothing_level : float, optional
+        The alpha value of the simple exponential smoothing, if the value
+        is set then this value will be used as the value.
+    """
+
+    REQUIRES_STATIONARY = True  # Changed this to True
+    __wrapped__ = SimpleExpSmoothing
+
+    def __init__(self, smoothing_level=None):
+        super().__init__()
+        self.smoothing_level = smoothing_level
+        self._model_kwargs = {}
+        if smoothing_level is not None:
+            self._fit_kwargs = {'smoothing_level': smoothing_level}
+        else:
+            self._fit_kwargs = {}
+        self.is_stationary = None
+
+    def __str__(self):
+        return 'SimpleExpSmoothing(alpha={})'.format(self.smoothing_level)
+
+    def _predict(self, steps, exog, alpha):
+        forecast = self.results.forecast(steps)
+
+        # Calculate prediction intervals manually
+        resid = self.results.resid
+        mse = np.mean(resid ** 2)
+        forecast_var = mse * np.arange(1, steps + 1)
+
+        z = stats.norm.ppf(1 - alpha / 2)
+        ci_lower = forecast - z * np.sqrt(forecast_var)
+        ci_upper = forecast + z * np.sqrt(forecast_var)
+
+        return np.column_stack((forecast, ci_lower, ci_upper)).T
+
+    def _before_init(self, endog, exog):
+        if len(endog) == 0:
+            raise ValueError('Need an endogenous (target) variable to fit')
+
+        # Check for stationarity
+        result = adfuller(endog)
+        self.is_stationary = result[1] <= 0.05  # p-value <= 0.05 indicates stationarity
+
+        return endog, None
+
+    def _fittedvalues(self):
+        return self.results.fittedvalues
+
+    def fit(self, endog, exog=None):
+        """
+        Fit the model to endogenous variable endog.
+
+        Parameters
+        ----------
+        endog : array_like
+            Dependent variable (y) of shape ``[nobs, k]``
+            (``k = 1`` for a single variable).
+        exog : array_like
+            Not used in this model, kept for API consistency.
+
+        Returns
+        -------
+        fitted_model
+        """
+        if isinstance(endog, Table):
+            endog, _ = self._orange_arrays(endog)
+
+        if not endog.size:
+            raise ValueError('Input series is empty. Nothing to learn.')
+
+        endog, _ = self._before_init(endog, None)
+        self._endog = endog
+        model = self.model = self.__wrapped__(endog)
+
+        self._before_fit(endog, None)
+        self.results = model.fit(**self._fit_kwargs)
+        return self
+
+
+
+
+
+
+
+# import numpy as np
+# from scipy import stats
+# from statsmodels.tsa.holtwinters import SimpleExpSmoothing
+#
+#
+# class SimpleExponentialSmoothing(_BaseModel):
+#     """Simple Exponential Smoothing model
+#
+#     A time series forecasting method for univariate data without a trend or seasonality.
+#
+#     Parameters
+#     ----------
+#     smoothing_level : float, optional
+#         The alpha value of the simple exponential smoothing, if the value
+#         is set then this value will be used as the value.
+#     """
+#
+#     REQUIRES_STATIONARY = True
+#     __wrapped__ = SimpleExpSmoothing
+#
+#     def __init__(self, smoothing_level=None):
+#         super().__init__()
+#         self.smoothing_level = smoothing_level
+#         self._model_kwargs = {}
+#         if smoothing_level is not None:
+#             self._fit_kwargs = {'smoothing_level': smoothing_level}
+#         else:
+#             self._fit_kwargs = {}
+#
+#     def __str__(self):
+#         return 'SimpleExpSmoothing(alpha={})'.format(self.smoothing_level)
+#
+#     def _predict(self, steps, exog, alpha):
+#         forecast = self.results.forecast(steps)
+#
+#         # Calculate prediction intervals manually
+#         resid = self.results.resid
+#         mse = np.mean(resid ** 2)
+#         forecast_var = mse * np.arange(1, steps + 1)
+#
+#         z = stats.norm.ppf(1 - alpha / 2)
+#         ci_lower = forecast - z * np.sqrt(forecast_var)
+#         ci_upper = forecast + z * np.sqrt(forecast_var)
+#
+#         return np.column_stack((forecast, ci_lower, ci_upper)).T
+#
+#     def _before_init(self, endog, exog):
+#         if len(endog) == 0:
+#             raise ValueError('Need an endogenous (target) variable to fit')
+#         return endog, None
+#
+#     def _fittedvalues(self):
+#         return self.results.fittedvalues
+#
+#     def fit(self, endog, exog=None):
+#         """
+#         Fit the model to endogenous variable endog.
+#
+#         Parameters
+#         ----------
+#         endog : array_like
+#             Dependent variable (y) of shape ``[nobs, k]``
+#             (``k = 1`` for a single variable).
+#         exog : array_like
+#             Not used in this model, kept for API consistency.
+#
+#         Returns
+#         -------
+#         fitted_model
+#         """
+#         if isinstance(endog, Table):
+#             endog, _ = self._orange_arrays(endog)
+#
+#         if not endog.size:
+#             raise ValueError('Input series is empty. Nothing to learn.')
+#
+#         endog, _ = self._before_init(endog, None)
+#         self._endog = endog
+#         model = self.model = self.__wrapped__(endog)
+#
+#         self._before_fit(endog, None)
+#         self.results = model.fit(**self._fit_kwargs)
+#         return self
