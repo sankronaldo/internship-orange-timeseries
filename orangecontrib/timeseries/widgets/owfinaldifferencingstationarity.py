@@ -112,7 +112,7 @@ class OWDifferencing(widget.OWWidget):
 
         # Plot original and differenced data
         self.plot_data(self.original_plot, y_values, "Original Data")
-        self.plot_data(self.differenced_plot, differenced_values, "Differenced Data")
+        self.plot_data(self.differenced_plot, differenced_values, "Transformed Data")
 
         # Check stationarity of differenced data
         self.check_stationarity(differenced_values, "Differenced")

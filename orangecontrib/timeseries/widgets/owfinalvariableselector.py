@@ -17,7 +17,7 @@ class TimeSeriesSelector(widget.OWWidget):
 
     class Outputs:
         target = Output("Target Variable", Table)
-        exogenous = Output("Exogenous Variables", Table)
+        exogenous = Output("Regression Variables", Table)
 
     want_main_area = False
 
