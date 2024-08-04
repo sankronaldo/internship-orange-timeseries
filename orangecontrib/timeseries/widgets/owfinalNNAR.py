@@ -336,7 +336,7 @@ from sklearn.preprocessing import StandardScaler
 class OWNNAR(widget.OWWidget):
     name = "NNAR Model"
     description = "Fit Neural Network AutoRegression model and visualize results"
-    icon = "icons/nnar.svg"
+    icon = "icons/final.svg"
     priority = 10
 
     class Inputs:

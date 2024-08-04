@@ -13,7 +13,7 @@ from PyQt5.QtCore import Qt
 class SARIMAXForecaster(OWWidget):
     name = "Dynamic Regression"
     description = "Forecast time series data using multiple exogenous variable"
-    icon = "icons/sarimax.svg"
+    icon = "icons/final.svg"
     priority = 20
 
     class Inputs:
