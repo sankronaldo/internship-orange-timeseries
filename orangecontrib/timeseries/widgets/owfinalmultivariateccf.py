@@ -14,7 +14,7 @@ from statsmodels.tsa.stattools import ccf
 class OWMultivariateCCF(widget.OWWidget):
     name = "Multivariate CCF"
     description = "Plot the residual CCF from a VAR model"
-    icon = "icons/final.svg"
+    icon = "icons/ow_mulccf.svg"
     priority = 10
 
     class Inputs:

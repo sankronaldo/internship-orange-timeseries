@@ -15,7 +15,7 @@ from datetime import datetime, timedelta
 class OWSeasonalDecomposition(widget.OWWidget):
     name = "Seasonal Decomposition"
     description = "Perform seasonal decomposition on time series data"
-    icon = "icons/final.svg"
+    icon = "icons/ow_decompose.svg"
     priority = 10
 
     class Inputs:

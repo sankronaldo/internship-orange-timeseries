@@ -10,7 +10,7 @@ import pyqtgraph as pg
 class OWARIMASimulator(widget.OWWidget):
     name = "ARIMA/SARIMA Simulator"
     description = "Simulate ARIMA or SARIMA time series"
-    icon = "icons/final.svg"
+    icon = "icons/ow_arimaSim.svg"
     priority = 10
 
     class Outputs:

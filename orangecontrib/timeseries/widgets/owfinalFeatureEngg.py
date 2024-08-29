@@ -41,7 +41,7 @@ class FeatureItem(QWidget):
 class OWTimeSeriesFeatureEngineering(widget.OWWidget):
     name = "Feature Engineering"
     description = "Create new features for time series data"
-    icon = "icons/final.svg"
+    icon = "icons/ow_featengg.svg"
     priority = 10
 
     class Inputs:

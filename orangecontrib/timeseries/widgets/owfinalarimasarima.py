@@ -12,7 +12,7 @@ from statsmodels.tsa.statespace.sarimax import SARIMAX
 class OWARIMASARIMAModel(widget.OWWidget):
     name = "ARIMA & SARIMA"
     description = "Fit ARIMA or SARIMA model and visualize results"
-    icon = "icons/final.svg"
+    icon = "icons/ow_arimasarima.svg"
     priority = 10
 
     class Inputs:

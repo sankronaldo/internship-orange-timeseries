@@ -21,7 +21,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 class OWWeatherData(widget.OWWidget):
     name = 'Weather Data'
     description = "Generate time series from Open-Meteo weather data."
-    icon = 'icons/final.svg'
+    icon = 'icons/ow_weather.svg'
     priority = 10
 
     class Outputs:

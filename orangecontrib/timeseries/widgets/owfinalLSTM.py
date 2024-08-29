@@ -16,7 +16,7 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error
 class OWLSTM(widget.OWWidget):
     name = "LSTM Forecaster"
     description = "Train LSTM model for time series forecasting"
-    icon = "icons/final.svg"
+    icon = "icons/ow_lstm.svg"
     priority = 10
 
     class Inputs:

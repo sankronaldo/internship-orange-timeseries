@@ -13,7 +13,7 @@ import traceback
 class VARWidget(widget.OWWidget):
     name = "Vector Autoregression"
     description = "VAR modeling and forecasting"
-    icon = "icons/final.svg"
+    icon = "icons/ow_var.svg"
     priority = 10
 
     class Inputs:

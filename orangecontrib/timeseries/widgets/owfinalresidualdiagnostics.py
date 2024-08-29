@@ -15,7 +15,7 @@ from PyQt5.QtGui import QFont
 class OWResidualDiagnostics(widget.OWWidget):
     name = "Residual Diagnostics"
     description = "Perform Ljung-Box and Shapiro-Wilk tests on residuals"
-    icon = "icons/final.svg"
+    icon = "icons/ow_residual.svg"
     priority = 70
 
     class Inputs:

@@ -11,7 +11,7 @@ from PyQt5.QtWidgets import QCheckBox
 class OWCrossCorrelation(widget.OWWidget):
     name = "CCF - CrossCorrelation"
     description = "Plot the cross-correlation of two time series"
-    icon = "icons/final.svg"
+    icon = "icons/ow_ccf.svg"
     priority = 10
 
     class Inputs:

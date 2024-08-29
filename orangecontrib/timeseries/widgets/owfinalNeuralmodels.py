@@ -16,7 +16,7 @@ from darts.dataprocessing.transformers import Scaler
 class OWNeuralForecast(widget.OWWidget):
     name = "Neural Forecasting Models"
     description = "Train N-BEATS, N-HiTS, or N-Linear models for time series forecasting using Darts"
-    icon = "icons/final.svg"
+    icon = "icons/ow_neural.svg"
     priority = 10
 
     class Inputs:

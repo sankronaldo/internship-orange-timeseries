@@ -15,7 +15,7 @@ from scipy import stats
 class OWExponentialSmoothing(widget.OWWidget):
     name = "Exponential Smoothing"
     description = "Fit Exponential Smoothing models and visualize results"
-    icon = "icons/final.svg"
+    icon = "icons/ow_expsmoothing.svg"
     priority = 10
 
     class Inputs:

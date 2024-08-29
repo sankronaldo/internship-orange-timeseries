@@ -15,7 +15,7 @@ from dtaidistance import dtw
 class OWDynamicTimeWarping(widget.OWWidget):
     name = "Dynamic Time Warping"
     description = "Compute and visualize DTW between two time series"
-    icon = "icons/final.svg"
+    icon = "icons/ow_dtw.svg"
     priority = 10
 
     class Inputs:

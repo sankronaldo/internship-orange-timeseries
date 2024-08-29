@@ -14,7 +14,7 @@ from darts.dataprocessing.transformers import Scaler
 class OWAdvancedTimeSeriesModels(widget.OWWidget):
     name = "Advanced MLP models"
     description = "Train TiDE or TSMixer model for time series forecasting using Darts"
-    icon = "icons/final.svg"
+    icon = "icons/ow_advancemlp.svg"
     priority = 10
 
     class Inputs:

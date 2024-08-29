@@ -13,7 +13,7 @@ from pyqtgraph import LinearRegionItem, mkBrush
 class OWChangepointDetection(widget.OWWidget):
     name = "Changepoint Detection"
     description = "Detect changepoints in time series data using ruptures"
-    icon = "icons/final.svg"
+    icon = "icons/ow_changepoint.svg"
     priority = 10
 
     class Inputs:

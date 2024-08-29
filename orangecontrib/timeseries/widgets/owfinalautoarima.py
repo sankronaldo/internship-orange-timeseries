@@ -12,7 +12,7 @@ import pandas as pd
 class AutoARIMAWidget(widget.OWWidget):
     name = "Auto ARIMA"
     description = "Automatic ARIMA modeling and forecasting"
-    icon = "icons/final.svg"
+    icon = "icons/ow_autoarima.svg"
     priority = 10
 
     class Inputs:

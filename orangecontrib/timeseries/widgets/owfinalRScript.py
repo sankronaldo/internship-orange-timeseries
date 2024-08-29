@@ -197,7 +197,7 @@ class ScriptItemModel(itemmodels.PyListModel):
 class OWRScript(OWWidget):
     name = "R Script"
     description = "Run R scripts"
-    icon = "icons/final.svg"
+    icon = "icons/ow_rscript.svg"
     priority = 3160
 
     class Inputs:

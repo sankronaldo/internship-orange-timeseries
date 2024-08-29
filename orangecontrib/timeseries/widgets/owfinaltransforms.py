@@ -12,7 +12,7 @@ from scipy import stats
 class OWDataTransforms(widget.OWWidget):
     name = "Data Transforms"
     description = "Apply various transforms to time series data"
-    icon = "icons/final.svg"
+    icon = "icons/ow_transforms.svg"
     priority = 10
 
     class Inputs:

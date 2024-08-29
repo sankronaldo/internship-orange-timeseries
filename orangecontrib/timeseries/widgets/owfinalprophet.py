@@ -14,7 +14,7 @@ import datetime
 class OWProphetForecaster(widget.OWWidget):
     name = "Prophet Forecaster"
     description = "Forecast time series using Facebook Prophet"
-    icon = "icons/final.svg"
+    icon = "icons/ow_prophet.svg"
     priority = 10
 
     class Inputs:

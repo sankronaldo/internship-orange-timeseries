@@ -12,7 +12,7 @@ from scipy import stats
 class OWETS(widget.OWWidget):
     name = "ETS Model"
     description = "Fit ETS (Error, Trend, Seasonal) models and visualize results"
-    icon = "icons/final.svg"
+    icon = "icons/ow_ets.svg"
     priority = 10
 
     class Inputs:

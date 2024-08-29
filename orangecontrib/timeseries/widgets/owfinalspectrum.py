@@ -10,7 +10,7 @@ import pyqtgraph as pg
 class OWPeriodogram(widget.OWWidget):
     name = "Periodogram"
     description = "View the raw and smoothed periodogram of a time series"
-    icon = "icons/final.svg"
+    icon = "icons/ow_periodogram.svg"
     priority = 10
 
     class Inputs:

@@ -19,7 +19,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 class OWCOVIDData(widget.OWWidget):
     name = 'COVID-19 Data'
     description = "Fetch COVID-19 data for various countries"
-    icon = 'icons/final.svg'
+    icon = 'icons/ow_covid.svg'
     priority = 10
 
     class Outputs:

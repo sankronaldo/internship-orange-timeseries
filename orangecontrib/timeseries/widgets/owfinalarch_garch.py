@@ -17,7 +17,7 @@ from statsmodels.stats.diagnostic import acorr_ljungbox
 class ARCHGARCHWidget(widget.OWWidget):
     name = "ARCH/GARCH"
     description = "ARCH and GARCH modeling and forecasting"
-    icon = "icons/final.svg"
+    icon = "icons/ow_arch.svg"
     priority = 10
 
     class Inputs:

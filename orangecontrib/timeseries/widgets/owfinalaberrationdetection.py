@@ -11,7 +11,7 @@ from pyod.models.iforest import IForest  # Using Isolation Forest for anomaly de
 class OWTimeSeriesAberration(widget.OWWidget):
     name = "Time Series Aberration Detection"
     description = "Detect and visualize aberrations in time series data"
-    icon = "icons/final.svg"
+    icon = "icons/ow_aberration.svg"
     priority = 10
 
     class Inputs:

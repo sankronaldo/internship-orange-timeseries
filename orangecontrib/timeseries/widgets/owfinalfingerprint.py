@@ -12,7 +12,7 @@ from scipy import stats
 class OWACFPACF(widget.OWWidget):
     name = "ACF & PACF"
     description = "Plot the ACF and PACF of time series data"
-    icon = "icons/final.svg"
+    icon = "icons/ow_fingerprint.svg"
     priority = 10
 
     class Inputs:

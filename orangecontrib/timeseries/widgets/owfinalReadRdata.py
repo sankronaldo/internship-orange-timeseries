@@ -13,7 +13,7 @@ import numpy as np
 class RDataReader(widget.OWWidget):
     name = "RData Reader"
     description = "Read data from .Rdata files"
-    icon = "icons/final.svg"
+    icon = "icons/ow_readRdata.svg"
     priority = 10
 
     class Outputs:

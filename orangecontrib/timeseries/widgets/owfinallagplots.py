@@ -13,7 +13,7 @@ from PyQt5.QtCore import Qt
 class OWLagPlot(widget.OWWidget):
     name = "Lag Plot"
     description = "Visualize lag plots of time series data"
-    icon = "icons/final.svg"
+    icon = "icons/ow_lagplots.svg"
     priority = 10
 
     class Inputs:

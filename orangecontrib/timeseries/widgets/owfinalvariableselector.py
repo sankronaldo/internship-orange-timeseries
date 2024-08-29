@@ -9,7 +9,7 @@ import numpy as np
 class TimeSeriesSelector(widget.OWWidget):
     name = "Time Series Selector"
     description = "Select target and exogenous variables from multiple time series data sources"
-    icon = "icons/final.svg"
+    icon = "icons/ow_varselect.svg"
     priority = 10
 
     class Inputs:

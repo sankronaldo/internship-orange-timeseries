@@ -13,7 +13,7 @@ from statsmodels.tsa.stattools import adfuller, kpss
 class OWDifferencing(widget.OWWidget):
     name = "Stationarity & Differencing"
     description = "Visualize and apply differencing to time series data"
-    icon = "icons/final.svg"
+    icon = "icons/ow_differencingstationarity.svg"
     priority = 130
     category = "Time Series"
 

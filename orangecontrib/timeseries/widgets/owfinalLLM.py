@@ -9,7 +9,7 @@ import google.generativeai as genai
 class OWLLMChatbot(OWWidget):
     name = "LLM Chatbot"
     description = "A chatbot widget using Google's Generative AI"
-    icon = "icons/final.svg"
+    icon = "icons/ow_llm.svg"
     priority = 10
 
     class Inputs:

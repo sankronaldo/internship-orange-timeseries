@@ -16,7 +16,7 @@ import torch
 class OWCTGAN(widget.OWWidget):
     name = "CTGAN Data Augmentation"
     description = "Augment time series data using CTGAN"
-    icon = "icons/final.svg"
+    icon = "icons/ow_ctgan.svg"
     priority = 10
 
     class Inputs:

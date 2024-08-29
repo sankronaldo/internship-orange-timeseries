@@ -12,7 +12,7 @@ import pywt
 class OWFrequencyDomainTransforms(widget.OWWidget):
     name = "Frequency Domain Transforms"
     description = "Apply Fourier and Wavelet transforms to time series data"
-    icon = "icons/final.svg"
+    icon = "icons/ow_freqdomain.svg"
     priority = 10
 
     class Inputs:

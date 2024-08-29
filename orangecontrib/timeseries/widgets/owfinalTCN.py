@@ -15,7 +15,7 @@ from darts.dataprocessing.transformers import Scaler
 class OWTCN(widget.OWWidget):
     name = "TCN-Temporal Convolutional Network"
     description = "Train TCN model for time series forecasting using Darts"
-    icon = "icons/final.svg"
+    icon = "icons/ow_tcn.svg"
     priority = 10
 
     class Inputs:
