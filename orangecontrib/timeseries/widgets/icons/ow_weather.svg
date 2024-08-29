@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1920">
+  <defs>
+    <style>
+      .circle { fill: #E6E6FA; }
+      .text { font-family: Arial, sans-serif; font-size: 200px; fill: #000000; }
+    </style>
+  </defs>
+
+  <circle class="circle" cx="960" cy="960" r="950"/>
+
+  <text class="text" x="960" y="960" text-anchor="middle" dominant-baseline="middle">
+    <tspan x="960" dy="100" font-size="500">Weather</tspan>
+  </text>
+</svg>
