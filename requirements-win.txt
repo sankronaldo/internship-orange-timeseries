@@ -1,0 +1,9 @@
+pmdarima
+prophet
+pyod
+ruptures
+pyreadr
+dtaidistance
+darts
+arch
+PyQt5
