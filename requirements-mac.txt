@@ -1,0 +1,12 @@
+pmdarima
+prophet
+pyod
+ruptures
+pyreadr
+dtaidistance
+darts
+arch
+PyQt5
+google-generativeai
+ctgan
+tensorflow
