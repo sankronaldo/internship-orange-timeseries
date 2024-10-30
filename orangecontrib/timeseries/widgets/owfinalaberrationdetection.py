@@ -9,7 +9,7 @@ from PyQt5.QtCore import Qt
 from pyod.models.iforest import IForest  # Using Isolation Forest for anomaly detection
 
 class OWTimeSeriesAberration(widget.OWWidget):
-    name = "Time Series Aberration Detection"
+    name = "Aberration Detection"
     description = "Detect and visualize aberrations in time series data"
     icon = "icons/ow_aberration.svg"
     priority = 10
