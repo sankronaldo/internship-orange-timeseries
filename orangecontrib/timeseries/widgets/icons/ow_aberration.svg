@@ -9,6 +9,6 @@
   <circle class="circle" cx="960" cy="960" r="950"/>
 
   <text class="text" x="960" y="960" text-anchor="middle" dominant-baseline="middle">
-    <tspan x="960" dy="100" font-size="500">Anomaly</tspan>
+    <tspan x="960" dy="100" font-size="400">Aberration</tspan>
   </text>
 </svg>
