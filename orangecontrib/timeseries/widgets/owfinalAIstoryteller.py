@@ -18,7 +18,7 @@ from statsmodels.tsa.holtwinters import ExponentialSmoothing
 class OWTimeSeriesStoryteller(OWWidget):
     name = "Time Series Storyteller"
     description = "Analyzes time series data and provides comprehensive insights using Gemini AI"
-    icon = "icons/final.svg"
+    icon = "icons/ow_aistoryteller.svg"
     priority = 10
 
     class Inputs:
